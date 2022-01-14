@@ -2,6 +2,10 @@
 Forked from official source of the etherlab and applied with additional improvement
 
 ## **Version History**
+### **[Patch-0005]**
+#### Added
+- igb drivers for kernel 5.10
+- complete to test in raspberry pi 4 cm with PCI-E igb card
 ### **[Patch-0004]**
 #### Added
 - add the rtdmnet driver (https://www.mail-archive.com/etherlab-dev@etherlab.org/msg00537.html)
