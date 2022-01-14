@@ -138,7 +138,7 @@ start)
             continue # ec_* module not found
         fi
 
-        if [ ${MODULE} != "generic" -a ${MODULE} != "ccat" ]; then
+        if [ ${MODULE} != "generic" -a ${MODULE} != "rtdmnet" -a ${MODULE} != "ccat" ]; then
             # try to unload standard module
             if ${LSMOD} | grep "^${MODULE} " > /dev/null; then
                 if ! ${RMMOD} ${MODULE}; then
@@ -149,7 +149,7 @@ start)
         fi
 
         if ! ${MODPROBE} ${MODPROBE_FLAGS} ${ECMODULE}; then
-            if [ ${MODULE} != "generic" -a ${MODULE} != "ccat" ]; then
+            if [ ${MODULE} != "generic" -a ${MODULE} != "rtdmnet" -a ${MODULE} != "ccat" ]; then
                 ${MODPROBE} ${MODPROBE_FLAGS} ${MODULE} # try to restore
             fi
             ${RMMOD} ${LOADED_MODULES}
@@ -180,7 +180,7 @@ stop)
 
     # load standard modules again
     for MODULE in ${DEVICE_MODULES}; do
-        if [ ${MODULE} == "generic" -o ${MODULE} == "ccat" ]; then
+        if [ ${MODULE} == "generic" -o ${MODULE} == "rtdmnet" -o ${MODULE} == "ccat" ]; then
             continue
         fi
         ${MODPROBE} ${MODPROBE_FLAGS} ${MODULE}

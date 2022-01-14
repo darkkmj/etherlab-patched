@@ -323,7 +323,7 @@ static void pcap_record(
         long reqd = size + sizeof(pcaprec_hdr_t);
         if (unlikely(reqd <= available)) {
             pcaprec_hdr_t *pcaphdr;
-            struct timeval t;
+            struct timespec64 t;
           
             // update curr data pointer
             device->master->pcap_curr_data = curr_data + reqd;
@@ -331,12 +331,12 @@ static void pcap_record(
             // fill in pcap frame header info
             pcaphdr = curr_data;
 #ifdef EC_RTDM
-            jiffies_to_timeval(device->jiffies_poll, &t);
+            jiffies_to_timespec64(device->jiffies_poll, &t);
 #else
             t = device->timeval_poll;
 #endif
             pcaphdr->ts_sec   = t.tv_sec;
-            pcaphdr->ts_usec  = t.tv_usec;
+            pcaphdr->ts_usec  = t.tv_nsec * 1000;
             pcaphdr->incl_len = size;
             pcaphdr->orig_len = size;
             curr_data += sizeof(pcaprec_hdr_t);

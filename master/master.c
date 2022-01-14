@@ -49,6 +49,7 @@
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
 #include <linux/sched/types.h> // struct sched_param
 #include <linux/sched/signal.h> // signal_pending
+#include <uapi/linux/sched/types.h>
 #endif
 
 #include "globals.h"
@@ -2021,7 +2022,8 @@ void ec_master_eoe_start(ec_master_t *master /**< EtherCAT master */)
         return;
     }
 
-    sched_setscheduler(master->eoe_thread, SCHED_NORMAL, &param);
+    // sched_setscheduler(master->eoe_thread, SCHED_NORMAL, &param);
+    sched_set_normal(master->eoe_thread, param.sched_priority);
     set_user_nice(master->eoe_thread, 0);
 }
 

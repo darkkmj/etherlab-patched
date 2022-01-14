@@ -191,6 +191,29 @@ AM_CONDITIONAL(ENABLE_GENERIC, test "x$enablegeneric" = "x1")
 AC_SUBST(ENABLE_GENERIC,[$enablegeneric])
 
 #------------------------------------------------------------------------------
+# RTDM Ethernet driver
+#------------------------------------------------------------------------------
+
+AC_ARG_ENABLE([rtdmnet],
+    AS_HELP_STRING([--enable-rtdmnet],
+                   [Enable RTDM Ethernet driver]),
+    [
+        case "${enableval}" in
+            yes) enablertdmnet=1
+                ;;
+            no) enablertdmnet=0
+                ;;
+            *) AC_MSG_ERROR([Invalid value for --enable-rtdmnet])
+                ;;
+        esac
+    ],
+    [enablertdmnet=$enablekernel]
+)
+
+AM_CONDITIONAL(ENABLE_RTDMNET, test "x$enablertdmnet" = "x1")
+AC_SUBST(ENABLE_RTDMNET,[$enablertdmnet])
+
+#------------------------------------------------------------------------------
 # 8139too driver
 #------------------------------------------------------------------------------
 

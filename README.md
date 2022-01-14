@@ -2,6 +2,10 @@
 Forked from official source of the etherlab and applied with additional improvement
 
 ## **Version History**
+### **[Patch-0004]**
+#### Added
+- add the rtdmnet driver (https://www.mail-archive.com/etherlab-dev@etherlab.org/msg00537.html)
+- solved some compile problems when use rtdmnet driver in kernel 5.10
 ### **[Patch-0003]**
 #### Added
 - add new generation of the i219 device information to the e1000e driver 
