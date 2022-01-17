@@ -2,6 +2,11 @@
 Forked from official source of the etherlab and applied with additional improvement
 
 ## **Version History**
+### **[Patch-0006]**
+#### Added
+- r8169, 8139too drivers for kernel 5.10 from official reposition of the etherlab (https://gitlab.com/etherlab.org/ethercat.git, branch: realtek-5.10)
+#### Fixed
+- fixed build problem by add some missing files 
 ### **[Patch-0005]**
 #### Added
 - igb drivers for kernel 5.10

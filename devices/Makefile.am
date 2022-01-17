@@ -39,7 +39,7 @@ DIST_SUBDIRS = \
 	cx2100 \
 	e1000 \
 	e1000e \
-	igb
+	igb 
 
 # using HEADERS to enable tags target
 noinst_HEADERS = \
@@ -111,6 +111,7 @@ noinst_HEADERS = \
 	8139too-4.14-orig.c \
 	8139too-4.19-ethercat.c \
 	8139too-4.19-orig.c \
+	8139too-5.10-ethercat.c \
 	e100-2.6.20-ethercat.c \
 	e100-2.6.20-orig.c \
 	e100-2.6.24-ethercat.c \
@@ -217,7 +218,10 @@ noinst_HEADERS = \
 	r8169-4.14-ethercat.c \
 	r8169-4.14-orig.c \
 	r8169-4.19-ethercat.c \
-	r8169-4.19-orig.c
+	r8169-4.19-orig.c \
+	r8169_firmware-5.10-ethercat.c \
+	r8169_main-5.10-ethercat.c \
+	r8169_phy_config-5.10-ethercat.c
 
 EXTRA_DIST = \
 	Kbuild.in
