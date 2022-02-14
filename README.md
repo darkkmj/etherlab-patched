@@ -2,6 +2,9 @@
 Forked from official source of the etherlab and applied with additional improvement
 
 ## **Version History**
+### **[Patch-0007]**
+#### Fixed
+- add '--disable-xenomai-auto-init' option to select whether to add '--auto-init-solib' or '--no-auto-init' to xenomai linker option
 ### **[Patch-0006]**
 #### Added
 - r8169, 8139too drivers for kernel 5.10 from official repository of the etherlab (https://gitlab.com/etherlab.org/ethercat.git, branch: realtek-5.10)

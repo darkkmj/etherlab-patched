@@ -758,6 +758,23 @@ AC_ARG_WITH([xenomai-dir],
 
 AC_MSG_CHECKING([for Xenomai path])
 
+AC_MSG_CHECKING([whether to add --no-auto-init option to xenomai linker option])
+AC_ARG_ENABLE([xenomai-auto-init],
+    AS_HELP_STRING([--disable-xenomai-auto-init],
+                   [Disable xnomai auto init [default=no]]),
+    [
+        case "${enableval}" in
+            yes) auto_init_xenomai="--auto-init-solib"
+                ;;
+            no) auto_init_xenomai="--no-auto-init"
+                ;;
+            *) AC_MSG_ERROR([Invalid value for --enable-xenomai-auto-init])
+                ;;
+        esac
+    ],
+    [auto_init_xenomai="--auto-init-solib"] # enabled by default
+)
+
 if test -z "${xenomaidir}"; then
     AC_MSG_RESULT([not specified.])
 else
@@ -773,9 +790,9 @@ else
 
     if test ${xenomai_ver%%.*} -gt 2; then
         xeno_alchemy_cflags=`$xenomaidir/bin/xeno-config --skin alchemy --cflags`
-        xeno_alchemy_ldflags=`$xenomaidir/bin/xeno-config --skin alchemy --auto-init-solib --ldflags`
-        xeno_posix_ldflags=`$xenomaidir/bin/xeno-config --skin posix --auto-init-solib --ldflags`
-        xeno_rtdm_ldflags=`$xenomaidir/bin/xeno-config --skin rtdm --auto-init-solib --ldflags`
+        xeno_alchemy_ldflags=`$xenomaidir/bin/xeno-config --skin alchemy $auto_init_xenomai --ldflags`
+        xeno_posix_ldflags=`$xenomaidir/bin/xeno-config --skin posix $auto_init_xenomai --ldflags`
+        xeno_rtdm_ldflags=`$xenomaidir/bin/xeno-config --skin rtdm $auto_init_xenomai --ldflags`
         xeno_v3=1
         xeno=0
     else
