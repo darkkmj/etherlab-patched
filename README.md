@@ -2,6 +2,9 @@
 Forked from official source of the etherlab and applied with additional improvement
 
 ## **Version History**
+### **[Patch-0008]**
+#### Added
+- e1000e drivers for kernel 5.10 (https://gitlab.com/etherlab.org/ethercat.git, branch: e1000e-5.10)
 ### **[Patch-0007]**
 #### Fixed
 - add '--disable-xenomai-auto-init' option to select whether to add '--auto-init-solib' or '--no-auto-init' to xenomai linker option
